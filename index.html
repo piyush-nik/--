@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry 😔</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffe6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            animation: bounceIn 1.2s ease;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff6666;
+            margin: 0;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            margin: 20px 0;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 1.2em;
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #ff4d4d;
+        }
+        .hearts {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            width: 20px;
+            height: 20px;
+            background-color: #ff6666;
+            position: absolute;
+            transform: rotate(45deg);
+            animation: float 5s infinite ease-in-out;
+        }
+        .heart:before, .heart:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color: #ff6666;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>I'm Sorry 😔</h1>
+        <p>Will you forgive me?</p>
+        <button onclick="forgive()">Forgive Me</button>
+    </div>
+
+    <div class="hearts"></div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.querySelector('.hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Interactive button function
+        function forgive() {
+            document.querySelector('h1').innerText = "Thank You! 😍";
+            document.querySelector('p').innerText = "You're the best!";
+            document.querySelector('button').innerText = "Hug Me!";
+            document.querySelector('button').onclick = () => {
+                alert("Sending a virtual hug! 🤗");
+            };
+        }
+    </script>
+
+</body>
+</html>
